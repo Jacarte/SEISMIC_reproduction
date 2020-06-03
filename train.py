@@ -51,14 +51,14 @@ import joblib
 joblib.dump(model,"svm.pkl")
 
 # Plot decision hyperplanes
+'''
 x_min, x_max = pca_2d[:, 0].min() - 1,   pca_2d[:,0].max() + 1
 y_min, y_max = pca_2d[:, 1].min() - 1,   pca_2d[:, 1].max() + 1
-xx, yy = np.meshgrid(np.arange(x_min, x_max, .01),   np.arange(y_min, y_max, .01))
+xx, yy = np.meshgrid(np.arange(0, 100, 1),   np.arange(0, 100, 1))
 svmClassifier_2d =   svm.LinearSVC(random_state=111).fit(pca_2d, y)
 Z = svmClassifier_2d.predict(np.c_[xx.ravel(),  yy.ravel()])
 Z = Z.reshape(xx.shape)
-plt.contour(xx, yy, Z)
-plt.axis('off')
+plt.contour(xx, yy, Z)'''
 plt.savefig("hyperplanes.png")
 
 for score in ["accuracy ", "precision", "recall   "]:
