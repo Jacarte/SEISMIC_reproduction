@@ -25,10 +25,10 @@ iris = datasets.load_iris()
 #print(iris)
 
 noMiners = astar + asteroids + funky + cpack + bullets + tanks + basic4gl
-miners = yazec + coinhive + cryptonight
+miners = yazec + coinhive + cryptonight.tolist()
 
 X = np.array(noMiners + miners)
-y = np.array([0]*len(noMiners) + [1]*miners)
+y = np.array([0]*len(noMiners) + [1]*len(miners))
 
 
 
