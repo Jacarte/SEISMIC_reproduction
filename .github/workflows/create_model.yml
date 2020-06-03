@@ -1,0 +1,33 @@
+name: Create and save SVM model
+# This workflow is triggered on pushes to the repository.
+on:
+  push:
+    paths:
+    - 'data/*/**'
+    - 'train.py'
+
+jobs:
+  train:
+    # Job name is Greeting
+    name: Train model
+    # This job runs on Linux
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install python
+        run: |
+          sudo apt-get update && sudo apt-get -y install python3 python3-pip
+      - name: Install dependencies
+        run: |
+          pip3 install -r requirements.txt
+      - name: Train model
+        run: |
+          python3 train.py
+      - name: Upload binaries to release linux
+        uses: svenstaro/upload-release-action@v1-release
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: ./svm.pkl
+          asset_name: svm.pkl
+          tag: v0.1
+          overwrite: true

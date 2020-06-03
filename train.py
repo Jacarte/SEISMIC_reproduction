@@ -30,9 +30,6 @@ model = model.fit(X, y)
 
 t = cross_val_score(model, X, y, cv=200, scoring='recall')
 
-print(t)
-# call predict to say
-
 import joblib
 
 joblib.dump(model,"svm.pkl")
