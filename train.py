@@ -17,13 +17,6 @@ from data import yazec_original as yazec
 from data import coinhive as coinhive
 from data import cryptonight as cryptonight
 
-
-
-# import some data to play with
-iris = datasets.load_iris()
-# Take the first two features. We could avoid this by using a two-dim dataset
-#print(iris)
-
 noMiners = astar + asteroids + funky + cpack + bullets + tanks + basic4gl
 miners = yazec + coinhive + cryptonight.tolist()
 
