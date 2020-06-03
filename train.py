@@ -38,9 +38,15 @@ C = 10.0  # SVM regularization parameter
 model = svm.SVC(kernel='linear', C=C)
 model = model.fit(X, y)
 
-t = cross_val_score(model, X, y, cv=200, scoring='recall')
+for score in ["accuracy ", "precision", "recall   "]:
+    print(score, end=" ")
+    
+    values = cross_val_score(model, X, y, cv=10, scoring=score.replace(" ", ""))
+    mean = values.mean()
 
-print(t)
+    print(" (mean %.5f)"%mean, end= " ")
+    print(" : ", end=" ")
+    print(" ".join("%.7f "%v for v in values))
 
 import joblib
 

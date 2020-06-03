@@ -22,12 +22,20 @@ jobs:
           pip3 install -r requirements.txt
       - name: Train model
         run: |
-          python3 train.py
+          python3 train.py > stats.txt
       - name: Upload binaries to release linux
         uses: svenstaro/upload-release-action@v1-release
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: ./svm.pkl
           asset_name: svm.pkl
+          tag: v0.1
+          overwrite: true
+      - name: Upload stats to release
+        uses: svenstaro/upload-release-action@v1-release
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: ./stats.txt
+          asset_name: stats.txt
           tag: v0.1
           overwrite: true
