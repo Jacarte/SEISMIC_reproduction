@@ -61,7 +61,7 @@ jobs:
         with:
           name: results
           path: ./automation/geckodriver.log
-  collect:
+  collect_rand:
     name: Collect traces randomized
     runs-on: ubuntu-latest
     steps:
