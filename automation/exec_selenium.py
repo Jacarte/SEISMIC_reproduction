@@ -26,7 +26,7 @@ def main(cli=True, observations=100):
     # The DesiredCapabilities approach does not work with firefox, see https://github.com/mozilla/geckodriver/issues/284
     profile.set_preference("devtools.console.stdout.content", True)
     options = Options()
-    #options.headless = True
+    options.headless = True
     driver = webdriver.Firefox(firefox_profile=profile, options=options)
     atexit.register(driver.close)
 
@@ -47,7 +47,7 @@ def collect(driver, observations):
 
     while True:
         lines = list(filter(None, map(parse_tuple, read_log())))
-        if len(lines) <= observations + 2:
+        if len(lines) < observations + 2:
             time.sleep(1)
             continue
 

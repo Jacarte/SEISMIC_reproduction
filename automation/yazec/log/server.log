@@ -5508,3 +5508,88 @@
 2020-06-04 11:38:50 debug main: main::stratum_read got {"id":null,"method":"mining.notify","params":["5165054e8f03fa7747de","04000000","9508ad8af2f9aa6c8454cce7e22f83bb504504b6109840bc87d1140100000000","1c93549ccca725600d0c28f0f9cbc71e58eb4cd5bf11b4b523ec4cb81bc2a7cb","6ed64adc8647e369654e393c101ab152eed335fc8f53eaa623cca82420eca333","2ac1d85e","0ac9021c",true]}
 2020-06-04 11:38:50 info  main: main::stratum_got_job job 5165054e8f03fa7747de 04000000 9508ad8af2f9aa6c8454cce7e22f83bb504504b6109840bc87d1140100000000 1c93549ccca725600d0c28f0f9cbc71e58eb4cd5bf11b4b523ec4cb81bc2a7cb 6ed64adc8647e369654e393c101ab152eed335fc8f53eaa623cca82420eca333 2ac1d85e 0ac9021c 1
 2020-06-04 11:38:50 debug main: main::websocket_tx 127.0.0.1:52561 send {"job":"040000009508ad8af2f9aa6c8454cce7e22f83bb504504b6109840bc87d11401000000001c93549ccca725600d0c28f0f9cbc71e58eb4cd5bf11b4b523ec4cb81bc2a7cb6ed64adc8647e369654e393c101ab152eed335fc8f53eaa623cca82420eca3332ac1d85e0ac9021cea03b64ae17f000001cd51","target":"0000aec33e1f671529a485cd7b900aec33e1f671529a485cd7b900aec33e1f67"}
+2020-06-04 11:39:09 debug main: main::websocket_tx 127.0.0.1:52561 send {"keepalive":1591263549}
+2020-06-04 11:39:43 debug AnyEvent::Loop: Using CLOCK_MONOTONIC as timebase.
+2020-06-04 11:39:43 info  AnyEvent: Autoloaded model 'AnyEvent::Impl::Perl', using it.
+2020-06-04 11:39:43 debug AnyEvent::Base: using Time::HiRes for sub-second timing accuracy.
+2020-06-04 11:39:43 info  main: main perl v5.30.2 on darwin, AnyEvent 7.13, Protocol::WebSocket 0.20
+2020-06-04 11:39:43 info  main: main started on 0.0.0.0:8888
+2020-06-04 11:39:43 info  main: main::stat.timer accepted sol/s = 0.0000
+2020-06-04 11:39:43 info  main: main::stratum.on_connect connected to eu1-zcash.flypool.org:3333
+2020-06-04 11:39:43 debug main: main::stratum_tx send {"id":1,"method":"mining.subscribe","params":["jazecminer","eu1-zcash.flypool.org",3333]}
+2020-06-04 11:39:43 debug main: main::stratum_read got {"error":null,"id":1,"result":["e703b6a1f7","e703b6a1f7"]}
+2020-06-04 11:39:43 info  main: main::stratum_subscribed nonce1 e703b6a1f7
+2020-06-04 11:39:43 debug main: main::stratum_tx send {"id":2,"method":"mining.authorize","params":["t1Vm6PbF2ZkSLshWHKwLqxD7oU6TgEDX5nV.js","x"]}
+2020-06-04 11:39:43 debug main: main::stratum_read got {"error":null,"id":2,"result":true}
+2020-06-04 11:39:43 info  main: main::stratum_read authorized
+2020-06-04 11:39:43 debug main: main::stratum_read got {"id":null,"method":"mining.set_target","params":["0000aec33e1f671529a485cd7b900aec33e1f671529a485cd7b900aec33e1f67"]}
+2020-06-04 11:39:43 info  main: main::stratum_got_target target 0000aec33e1f671529a485cd7b900aec33e1f671529a485cd7b900aec33e1f67
+2020-06-04 11:39:43 debug main: main::stratum_tx send {"id":3,"method":"mining.extranonce.subscribe","params":[]}
+2020-06-04 11:39:44 debug main: main::stratum_read got {"id":null,"method":"mining.notify","params":["ab2936565cd4d0d37ed9","04000000","224ba117acbe36ce159a78cc123a94c4a728b0eee3e260b5bade5e0000000000","5b1a7521eeeef5508be1f5ce190c6b059c865b878dbe26d3b6e0db08ef9ce5ed","29f7f4f5341e8844c3ef4d766ce74bdba7df38e5a6bfda9eb00b0010a0f48014","52c1d85e","7fc6021c",true]}
+2020-06-04 11:39:44 info  main: main::stratum_got_job job ab2936565cd4d0d37ed9 04000000 224ba117acbe36ce159a78cc123a94c4a728b0eee3e260b5bade5e0000000000 5b1a7521eeeef5508be1f5ce190c6b059c865b878dbe26d3b6e0db08ef9ce5ed 29f7f4f5341e8844c3ef4d766ce74bdba7df38e5a6bfda9eb00b0010a0f48014 52c1d85e 7fc6021c 1
+2020-06-04 11:39:46 debug main: main::httpd.cb 127.0.0.1:52627 connected
+2020-06-04 11:39:46 debug main: main::http 127.0.0.1:52627 get index.html
+2020-06-04 11:39:46 info  main: main::http 127.0.0.1:52627 static index.html size 3629
+2020-06-04 11:39:46 debug main: main::httpd.on_eof 127.0.0.1:52627 disconnected
+2020-06-04 11:39:46 debug main: main::httpd.cb 127.0.0.1:52628 connected
+2020-06-04 11:39:46 debug main: main::http 127.0.0.1:52628 get jazecminer.js
+2020-06-04 11:39:46 info  main: main::http 127.0.0.1:52628 static jazecminer.js size 68133
+2020-06-04 11:39:46 debug main: main::httpd.on_eof 127.0.0.1:52628 disconnected
+2020-06-04 11:39:46 debug main: main::httpd.cb 127.0.0.1:52629 connected
+2020-06-04 11:39:46 debug main: main::http 127.0.0.1:52629 get 100.1.jazecminer.profiled.wasm
+2020-06-04 11:39:46 info  main: main::http 127.0.0.1:52629 static 100.1.jazecminer.profiled.wasm size 34408
+2020-06-04 11:39:46 debug main: main::httpd.on_eof 127.0.0.1:52629 disconnected
+2020-06-04 11:39:46 debug main: main::httpd.cb 127.0.0.1:52630 connected
+2020-06-04 11:39:46 debug main: main::httpd.cb 127.0.0.1:52631 connected
+2020-06-04 11:39:46 debug main: main::http 127.0.0.1:52630 get favicon.ico
+2020-06-04 11:39:46 info  main: main::http 127.0.0.1:52630 static favicon.ico size 318
+2020-06-04 11:39:46 debug main: main::http 127.0.0.1:52631 get 100.1.jazecminer.profiled.wasm
+2020-06-04 11:39:46 info  main: main::http 127.0.0.1:52631 static 100.1.jazecminer.profiled.wasm size 34408
+2020-06-04 11:39:46 debug main: main::httpd.on_eof 127.0.0.1:52630 disconnected
+2020-06-04 11:39:46 debug main: main::httpd.on_eof 127.0.0.1:52631 disconnected
+2020-06-04 11:39:51 debug main: main::httpd.cb 127.0.0.1:52635 connected
+2020-06-04 11:39:51 debug main: main::http 127.0.0.1:52635 get ws
+2020-06-04 11:39:51 debug main: main::websocket_onread 127.0.0.1:52635 opened
+2020-06-04 11:39:51 debug main: main::websocket_tx 127.0.0.1:52635 send {"job":"04000000224ba117acbe36ce159a78cc123a94c4a728b0eee3e260b5bade5e00000000005b1a7521eeeef5508be1f5ce190c6b059c865b878dbe26d3b6e0db08ef9ce5ed29f7f4f5341e8844c3ef4d766ce74bdba7df38e5a6bfda9eb00b0010a0f4801452c1d85e7fc6021ce703b6a1f77f000001cd9b","target":"0000aec33e1f671529a485cd7b900aec33e1f671529a485cd7b900aec33e1f67"}
+2020-06-04 11:40:26 debug AnyEvent::Loop: Using CLOCK_MONOTONIC as timebase.
+2020-06-04 11:40:26 info  AnyEvent: Autoloaded model 'AnyEvent::Impl::Perl', using it.
+2020-06-04 11:40:26 debug AnyEvent::Base: using Time::HiRes for sub-second timing accuracy.
+2020-06-04 11:40:26 info  main: main perl v5.30.2 on darwin, AnyEvent 7.13, Protocol::WebSocket 0.20
+2020-06-04 11:40:26 info  main: main started on 0.0.0.0:8888
+2020-06-04 11:40:26 info  main: main::stat.timer accepted sol/s = 0.0000
+2020-06-04 11:40:26 info  main: main::stratum.on_connect connected to eu1-zcash.flypool.org:3333
+2020-06-04 11:40:26 debug main: main::stratum_tx send {"id":1,"method":"mining.subscribe","params":["jazecminer","eu1-zcash.flypool.org",3333]}
+2020-06-04 11:40:26 debug main: main::stratum_read got {"error":null,"id":1,"result":["ef03b55ffa","ef03b55ffa"]}
+2020-06-04 11:40:26 info  main: main::stratum_subscribed nonce1 ef03b55ffa
+2020-06-04 11:40:26 debug main: main::stratum_tx send {"id":2,"method":"mining.authorize","params":["t1Vm6PbF2ZkSLshWHKwLqxD7oU6TgEDX5nV.js","x"]}
+2020-06-04 11:40:26 debug main: main::stratum_read got {"error":null,"id":2,"result":true}
+2020-06-04 11:40:26 info  main: main::stratum_read authorized
+2020-06-04 11:40:26 debug main: main::stratum_read got {"id":null,"method":"mining.set_target","params":["0000aec33e1f671529a485cd7b900aec33e1f671529a485cd7b900aec33e1f67"]}
+2020-06-04 11:40:26 info  main: main::stratum_got_target target 0000aec33e1f671529a485cd7b900aec33e1f671529a485cd7b900aec33e1f67
+2020-06-04 11:40:26 debug main: main::stratum_tx send {"id":3,"method":"mining.extranonce.subscribe","params":[]}
+2020-06-04 11:40:27 debug main: main::stratum_read got {"id":null,"method":"mining.notify","params":["6244677629e2c8cf1611","04000000","802ddc224ca7c6f69fe67515a007a3b8b3c2ef7341cc36013a7a5f0100000000","ea3dec1c87328685bc94b8c96ef5d76c450aaa1adc5d79b0ba9a983ea7a16435","29f7f4f5341e8844c3ef4d766ce74bdba7df38e5a6bfda9eb00b0010a0f48014","7dc1d85e","32b9021c",true]}
+2020-06-04 11:40:27 info  main: main::stratum_got_job job 6244677629e2c8cf1611 04000000 802ddc224ca7c6f69fe67515a007a3b8b3c2ef7341cc36013a7a5f0100000000 ea3dec1c87328685bc94b8c96ef5d76c450aaa1adc5d79b0ba9a983ea7a16435 29f7f4f5341e8844c3ef4d766ce74bdba7df38e5a6bfda9eb00b0010a0f48014 7dc1d85e 32b9021c 1
+2020-06-04 11:40:29 debug main: main::httpd.cb 127.0.0.1:52705 connected
+2020-06-04 11:40:29 debug main: main::http 127.0.0.1:52705 get index.html
+2020-06-04 11:40:29 info  main: main::http 127.0.0.1:52705 static index.html size 3629
+2020-06-04 11:40:29 debug main: main::httpd.on_eof 127.0.0.1:52705 disconnected
+2020-06-04 11:40:29 debug main: main::httpd.cb 127.0.0.1:52706 connected
+2020-06-04 11:40:29 debug main: main::http 127.0.0.1:52706 get jazecminer.js
+2020-06-04 11:40:29 info  main: main::http 127.0.0.1:52706 static jazecminer.js size 68133
+2020-06-04 11:40:29 debug main: main::httpd.on_eof 127.0.0.1:52706 disconnected
+2020-06-04 11:40:29 debug main: main::httpd.cb 127.0.0.1:52707 connected
+2020-06-04 11:40:29 debug main: main::http 127.0.0.1:52707 get 100.1.jazecminer.profiled.wasm
+2020-06-04 11:40:29 info  main: main::http 127.0.0.1:52707 static 100.1.jazecminer.profiled.wasm size 34408
+2020-06-04 11:40:29 debug main: main::httpd.on_eof 127.0.0.1:52707 disconnected
+2020-06-04 11:40:29 debug main: main::httpd.cb 127.0.0.1:52708 connected
+2020-06-04 11:40:29 debug main: main::http 127.0.0.1:52708 get 100.1.jazecminer.profiled.wasm
+2020-06-04 11:40:29 info  main: main::http 127.0.0.1:52708 static 100.1.jazecminer.profiled.wasm size 34408
+2020-06-04 11:40:29 debug main: main::httpd.on_eof 127.0.0.1:52708 disconnected
+2020-06-04 11:40:29 debug main: main::httpd.cb 127.0.0.1:52710 connected
+2020-06-04 11:40:29 debug main: main::http 127.0.0.1:52710 get favicon.ico
+2020-06-04 11:40:29 info  main: main::http 127.0.0.1:52710 static favicon.ico size 318
+2020-06-04 11:40:29 debug main: main::httpd.on_eof 127.0.0.1:52710 disconnected
+2020-06-04 11:40:35 debug main: main::httpd.cb 127.0.0.1:52711 connected
+2020-06-04 11:40:35 debug main: main::http 127.0.0.1:52711 get ws
+2020-06-04 11:40:35 debug main: main::websocket_onread 127.0.0.1:52711 opened
+2020-06-04 11:40:35 debug main: main::websocket_tx 127.0.0.1:52711 send {"job":"04000000802ddc224ca7c6f69fe67515a007a3b8b3c2ef7341cc36013a7a5f0100000000ea3dec1c87328685bc94b8c96ef5d76c450aaa1adc5d79b0ba9a983ea7a1643529f7f4f5341e8844c3ef4d766ce74bdba7df38e5a6bfda9eb00b0010a0f480147dc1d85e32b9021cef03b55ffa7f000001cde7","target":"0000aec33e1f671529a485cd7b900aec33e1f671529a485cd7b900aec33e1f67"}

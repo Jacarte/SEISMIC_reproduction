@@ -35,7 +35,7 @@ def processPool(poolFolder):
             p1 = Popen(["perl", "server.pl"], cwd="yazec")
             # Collect traces
 
-            lines = exec_selenium.main(False, 2)
+            lines = exec_selenium.main(False, 100)
             
             # Save collect 
             f = open(f"out/data.py", 'a')
@@ -52,7 +52,6 @@ def processPool(poolFolder):
             os.remove(w1)
             os.remove(wt1)
 
-            break
     except KeyboardInterrupt:
         if p1 is not None:
             os.kill(p1.pid, signal=signal.SIGTERM)
