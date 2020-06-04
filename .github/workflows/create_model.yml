@@ -5,6 +5,7 @@ on:
     paths:
     - 'data/*/**'
     - 'train.py'
+    - '.github/workflows/create_model.yml'
 
 jobs:
   train:
