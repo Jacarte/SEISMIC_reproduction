@@ -5,7 +5,8 @@ on:
     paths:
     - 'data/*/**'
     - 'train.py'
-    - 'collect.py'
+    - 'automation/collect.py'
+    - 'automation/pool/*/**'
     - '.github/workflows/create_model.yml'
 
 jobs:
@@ -79,7 +80,7 @@ jobs:
       - name: Install wabt
         run: |
           git clone https://github.com/WebAssembly/wabt && cd wabt && git submodule update --init && mkdir build && cd build && cmake .. && cmake --build .
-      - run: export PATH=./wabt/build:$PATH && cd automation && mkdir out && python3 collect.py 
+      - run: export PATH=$(PWD)/wabt/build:$PATH && cd automation && mkdir out && python3 collect.py 
       - name: Upload artifacts
         uses: actions/upload-artifact@v2
         with:
