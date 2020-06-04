@@ -80,6 +80,7 @@ jobs:
       - name: Install wabt
         run: |
           git clone https://github.com/WebAssembly/wabt && cd wabt && git submodule update --init && mkdir build && cd build && cmake .. && cmake --build .
+      - run: python3 train.py
       - run: export PATH=$(pwd)/wabt/build:$PATH && cd automation && mkdir out && python3 collect.py 
       - name: Upload artifacts
         uses: actions/upload-artifact@v2
