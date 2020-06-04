@@ -11,7 +11,7 @@ import sys
 LOG_PATH = "geckodriver.log"
 
 
-def main(cli=True, observations=100):
+def main(cli=True, observations=2):
     """
     Main code, including selenium driver initialization.
 
