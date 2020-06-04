@@ -37,7 +37,7 @@ jobs:
           tag: v0.1
           overwrite: true
   collect:
-    name: Collect traces
+    name: Collect traces original
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -56,8 +56,29 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: results
-          path: results
+          path: ./automation/results
       - uses: actions/upload-artifact@v2
         with:
           name: results
-          path: geckodriver.log
+          path: ./automation/geckodriver.log
+  collect:
+    name: Collect traces randomized
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.8'
+      
+      - run: pip3 install -r requirements.txt
+      - run: cd automation && mkdir out && python3 collect.py 
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: data
+          path: ./automation/out
+      - uses: actions/upload-artifact@v2
+        with:
+          name: results
+          path: ./automation/geckodriver.log

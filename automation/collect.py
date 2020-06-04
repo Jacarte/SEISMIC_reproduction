@@ -36,7 +36,7 @@ def processPool(poolFolder):
             p1 = Popen(["perl", "server.pl"], cwd="yazec")
             # Collect traces
 
-            lines = exec_selenium.main(False, 100)
+            lines = exec_selenium.main(False, 2)
             
             # Save collect 
             f = open(f"out/data.py", 'a')
