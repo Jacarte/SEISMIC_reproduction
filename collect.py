@@ -42,8 +42,7 @@ def collect(driver):
     driver.get("http://localhost:8888")
 
     # Wait enough time for 100 logs, 5 seconds each
-    # time.sleep(5 + 100 * 5)
-    time.sleep(1)
+    time.sleep(5 + 100 * 5)
 
     while True:
         lines = list(filter(None, map(parse_tuple, read_log())))
