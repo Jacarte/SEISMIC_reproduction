@@ -56,7 +56,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: results
-          path: ./automation/results
+          path: results
       - uses: actions/upload-artifact@v2
         with:
           name: results
@@ -72,13 +72,12 @@ jobs:
           python-version: '3.8'
       
       - run: pip3 install -r requirements.txt
-      - run: cd automation && mkdir out && python3 collect.py 
+      - name: Install wabt
+        run: |
+          git clone --depth=1 https://github.com/WebAssembly/wabt && cd wabt && mkdir build && cmake .. && cmake --build .
+      - run: export PATH=./wabt/build:$PATH && cd automation && mkdir out && python3 collect.py 
       - name: Upload artifacts
         uses: actions/upload-artifact@v2
         with:
           name: data
           path: ./automation/out
-      - uses: actions/upload-artifact@v2
-        with:
-          name: results
-          path: ./automation/geckodriver.log
