@@ -2,3 +2,4 @@ __pycache__
 svm.pkl
 
 tmp
+geckodriver.log
