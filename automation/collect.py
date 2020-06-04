@@ -45,7 +45,11 @@ def processPool(poolFolder):
             f.close()
 
             if try_to_break.tryToBreak(lines):
-                print(f"\n\n--------------{w} breaks the classifier !!!")
+                print(f"\n\n--------------{w} breaks the classifier !!!\n\n")
+
+                f = open(f"out/class.txt", 'a')
+                f.write(f"{w} breaks the classifier\n")
+                f.close()
 
             os.kill(p1.pid, signal.SIGTERM)
 
