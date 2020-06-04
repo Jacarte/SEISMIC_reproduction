@@ -5,13 +5,12 @@ on:
     paths:
     - 'data/*/**'
     - 'train.py'
+    - 'collect.py'
     - '.github/workflows/create_model.yml'
 
 jobs:
   train:
-    # Job name is Greeting
     name: Train model
-    # This job runs on Linux
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -19,12 +18,8 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: '3.8'
-      - name: Install dependencies
-        run: |
-          pip3 install -r requirements.txt
-      - name: Train model
-        run: |
-          python3 train.py > stats.txt
+      - run: pip3 install -r requirements.txt
+      - run: python3 train.py > stats.txt
       - name: Upload binaries to release linux
         uses: svenstaro/upload-release-action@v1-release
         with:
@@ -41,3 +36,28 @@ jobs:
           asset_name: stats.txt
           tag: v0.1
           overwrite: true
+  collect:
+    name: Collect traces
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.8'
+      - name: Start server
+        run: |
+          git clone --depth=1 https://github.com/wenhao1006/SEISMIC/
+          cd SEISMIC/YetAnotherZECMiner
+          perl server.pl &
+      - run: pip3 install -r requirements.txt
+      - run: ./collect.py > results
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: results
+          path: results
+      - uses: actions/upload-artifact@v2
+        with:
+          name: results
+          path: geckodriver.log
