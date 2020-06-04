@@ -36,7 +36,7 @@ def processPool(poolFolder):
             p1 = Popen(["perl", "server.pl"], cwd="yazec")
             # Collect traces
 
-            lines = exec_selenium.main(False, 2)
+            lines = exec_selenium.main(False, 10)
             
             # Save collect 
             f = open(f"out/data.py", 'a')
@@ -51,6 +51,7 @@ def processPool(poolFolder):
                 f.write(f"{w} breaks the classifier\n")
                 f.close()
 
+            print("Killing server...")
             os.kill(p1.pid, signal.SIGTERM)
 
 
