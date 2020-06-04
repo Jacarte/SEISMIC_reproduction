@@ -7,6 +7,7 @@ import shutil
 import signal
 import exec_selenium
 import try_to_break
+import sys
 
 def processPool(poolFolder):
     

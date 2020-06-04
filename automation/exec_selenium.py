@@ -6,6 +6,7 @@ import time
 from selenium import webdriver
 from selenium.webdriver import FirefoxProfile
 from selenium.webdriver.firefox.options import Options
+import sys
 
 LOG_PATH = "geckodriver.log"
 
@@ -41,8 +42,8 @@ def main(cli=True, observations=100):
 def collect(driver, observations):
     driver.get("http://localhost:8888")
 
-    # Wait enough time for 100 logs, 5 seconds each
-    time.sleep(5 + 100 * 5)
+    # Wait enough time for observations's logs, 5 seconds each
+    time.sleep(5 + observations * 5)
 
     while True:
         lines = list(filter(None, map(parse_tuple, read_log())))

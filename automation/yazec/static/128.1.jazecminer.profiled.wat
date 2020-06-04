@@ -4467,13 +4467,13 @@
               (i32.const 0))
             (drop
               (call $memcpy
-                (i32.sub
-                  (i32.add (set_global 11 (i64.add (get_global 11) (i64.const 1)))
+                (i32.add (set_global 11 (i64.add (get_global 11) (i64.const 1)))
+                  (i32.load offset=16
+                    (local.get 3))
+                  (i32.sub
                     (i32.load offset=28
                       (local.get 3))
-                    (i32.load offset=16
-                      (local.get 3)))
-                  (i32.const -64))
+                    (i32.const -64)))
                 (i32.load offset=24
                   (local.get 3))
                 (i32.load offset=12
@@ -4535,10 +4535,10 @@
                       (i32.const 128)))
                   (i32.store16 offset=22
                     (local.get 3)
-                    (i32.add (set_global 11 (i64.add (get_global 11) (i64.const 1)))
+                    (i32.sub
                       (i32.load16_u offset=22
                         (local.get 3))
-                      (i32.const -128)))
+                      (i32.const 128)))
                   (br 1 (;@3;)))))))
         (drop
           (call $memcpy
