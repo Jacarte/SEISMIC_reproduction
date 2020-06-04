@@ -7,7 +7,7 @@ def tryToBreak(data):
 
     classes = model.predict(data)
 
-    classes = [c == 1 for c in classes]
+    classes = [c == 0 for c in classes]
 
     return any(classes)
 
