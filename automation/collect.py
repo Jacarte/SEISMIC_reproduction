@@ -6,7 +6,13 @@ import os
 import shutil
 import signal
 
-WAIT_FOR=10 # 10 seconds
+WAIT_FOR=600 # 10 minutes
+CHROME = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
+
+def openChromeHeadless():
+    p2 = Popen([CHROME, "--no-sandbox", "-user-data-dir=tmp", "http://localhost:8888"])
+
+    return p2
 
 def processPool(poolFolder):
     
@@ -32,8 +38,9 @@ def processPool(poolFolder):
 
         print("Opening server...")
         p1 = Popen(["perl", "server.pl"], cwd="yazec")
-        
         # Collect traces
+
+        p2 = openChromeHeadless()
 
         # Remove pool
         try:
@@ -43,9 +50,17 @@ def processPool(poolFolder):
         print("Killing server")
         os.kill(p1.pid, signal.SIGTERM)
 
+
+        try:
+            o2.communicate(timeout=0)
+        except:
+            pass
+        os.kill(p2.pid, signal.SIGTERM)
+    
         os.remove(w1)
         os.remove(wt1)
 
+        break
         
 
 if __name__ == "__main__":
