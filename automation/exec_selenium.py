@@ -10,7 +10,7 @@ from selenium.webdriver.firefox.options import Options
 LOG_PATH = "geckodriver.log"
 
 
-def main(cli=True):
+def main(cli=True, observations=100):
     """
     Main code, including selenium driver initialization.
 
@@ -26,11 +26,11 @@ def main(cli=True):
     # The DesiredCapabilities approach does not work with firefox, see https://github.com/mozilla/geckodriver/issues/284
     profile.set_preference("devtools.console.stdout.content", True)
     options = Options()
-    options.headless = True
+    #options.headless = True
     driver = webdriver.Firefox(firefox_profile=profile, options=options)
     atexit.register(driver.close)
 
-    lines = collect(driver)
+    lines = collect(driver, observations)
     if not cli:
         return lines
 
@@ -38,7 +38,7 @@ def main(cli=True):
         print(line)
 
 
-def collect(driver):
+def collect(driver, observations):
     driver.get("http://localhost:8888")
 
     # Wait enough time for 100 logs, 5 seconds each
@@ -47,11 +47,11 @@ def collect(driver):
 
     while True:
         lines = list(filter(None, map(parse_tuple, read_log())))
-        if len(lines) < 100:
+        if len(lines) <= observations + 2:
             time.sleep(1)
             continue
 
-        return lines
+        return lines[2:] #discarding first measurements
 
 
 def read_log(fname=LOG_PATH, prefix='console.log: "('):

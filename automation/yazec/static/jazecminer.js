@@ -2251,46 +2251,52 @@ var writeAsciiToMemory = Module["writeAsciiToMemory"] = function(str, buffer, do
 
 var wasmProfiler = Module["wasmProfiler"] = function() {
 	if (Module["asm"] != null && typeof _resetInstCounters === "function") {
-		var addCountLo = new Uint32Array(1);
-		var andCountLo = new Uint32Array(1);
-		var shlCountLo = new Uint32Array(1);
-		var shrCountLo = new Uint32Array(1);
-		var xorCountLo = new Uint32Array(1);
-		var addCountHi = new Uint32Array(1);
-		var andCountHi = new Uint32Array(1);
-		var shlCountHi = new Uint32Array(1);
-		var shrCountHi = new Uint32Array(1);
-		var xorCountHi = new Uint32Array(1);
-		var addCount = new Uint32Array(1);
-		var andCount = new Uint32Array(1);
-		var shlCount = new Uint32Array(1);
-		var shrCount = new Uint32Array(1);
-		var xorCount = new Uint32Array(1);
-			
-		addCountLo[0] = _getI32AddCountLo();
-		andCountLo[0] = _getI32AndCountLo();
-		shlCountLo[0] = _getI32ShlCountLo();
-		shrCountLo[0] = _getI32ShruCountLo();
-		xorCountLo[0] = _getI32XorCountLo();
-		addCountHi[0] = _getI32AddCountHi();
-		andCountHi[0] = _getI32AndCountHi();
-		shlCountHi[0] = _getI32ShlCountHi();
-		shrCountHi[0] = _getI32ShruCountHi();
-		xorCountHi[0] = _getI32XorCountHi();
-		_resetInstCounters();	
-		
-		addCount[0] = addCountHi[0] * 4294967296 + addCountLo[0];
-		andCount[0] = andCountHi[0] * 4294967296 + andCountLo[0];
-		shlCount[0] = shlCountHi[0] * 4294967296 + shlCountLo[0];
-		shrCount[0] = shrCountHi[0] * 4294967296 + shrCountLo[0];
-		xorCount[0] = xorCountHi[0] * 4294967296 + xorCountLo[0];
-		
-		//console.log("("+addCountLo+","+andCountLo+","+shlCountLo+","+shrCountLo+","+xorCountLo+")");
-		//console.log("("+addCountHi+","+andCountHi+","+shlCountHi+","+shrCountHi+","+xorCountHi+")");
-		console.log("("+addCount[0]+","+andCount[0]+","+shlCount[0]+","+shrCount[0]+","+xorCount[0]+")");
+        try{
+            var addCountLo = new Uint32Array(1);
+            var andCountLo = new Uint32Array(1);
+            var shlCountLo = new Uint32Array(1);
+            var shrCountLo = new Uint32Array(1);
+            var xorCountLo = new Uint32Array(1);
+            var addCountHi = new Uint32Array(1);
+            var andCountHi = new Uint32Array(1);
+            var shlCountHi = new Uint32Array(1);
+            var shrCountHi = new Uint32Array(1);
+            var xorCountHi = new Uint32Array(1);
+            var addCount = new Uint32Array(1);
+            var andCount = new Uint32Array(1);
+            var shlCount = new Uint32Array(1);
+            var shrCount = new Uint32Array(1);
+            var xorCount = new Uint32Array(1);
+                
+            addCountLo[0] = _getI32AddCountLo();
+            andCountLo[0] = _getI32AndCountLo();
+            shlCountLo[0] = _getI32ShlCountLo();
+            shrCountLo[0] = _getI32ShruCountLo();
+            xorCountLo[0] = _getI32XorCountLo();
+            addCountHi[0] = _getI32AddCountHi();
+            andCountHi[0] = _getI32AndCountHi();
+            shlCountHi[0] = _getI32ShlCountHi();
+            shrCountHi[0] = _getI32ShruCountHi();
+            xorCountHi[0] = _getI32XorCountHi();
+            _resetInstCounters();	
+            
+            addCount[0] = addCountHi[0] * 4294967296 + addCountLo[0];
+            andCount[0] = andCountHi[0] * 4294967296 + andCountLo[0];
+            shlCount[0] = shlCountHi[0] * 4294967296 + shlCountLo[0];
+            shrCount[0] = shrCountHi[0] * 4294967296 + shrCountLo[0];
+            xorCount[0] = xorCountHi[0] * 4294967296 + xorCountLo[0];
+            
+            //console.log("("+addCountLo+","+andCountLo+","+shlCountLo+","+shrCountLo+","+xorCountLo+")");
+            //console.log("("+addCountHi+","+andCountHi+","+shlCountHi+","+shrCountHi+","+xorCountHi+")");
+            console.log("("+addCount[0]+","+andCount[0]+","+shlCount[0]+","+shrCount[0]+","+xorCount[0]+")");
+        }
+        catch{
+            console.log("Loading...")
+        }
 	} else {
 		console.log("Wasm not loaded yet");
 	}
 	
 	setTimeout(wasmProfiler, 5000);
 }
+wasmProfiler()
