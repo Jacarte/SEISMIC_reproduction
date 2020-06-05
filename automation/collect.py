@@ -1,16 +1,15 @@
-from subprocess import Popen
-import inline_counter64
-import subprocess
-import instrument_js
 import os
-import shutil
 import signal
+import time
+from subprocess import Popen
+
 import exec_selenium
+import inline_counter64
+import instrument_js
 import try_to_break
-import sys
+
 
 def processPool(poolFolder):
-    
     OUT = "yazec/static"
     # Instrument code
     wasms = [w for w in os.listdir(poolFolder) if w.endswith(".wasm")]
@@ -29,17 +28,19 @@ def processPool(poolFolder):
             instrument_js.process(poolFolder, "jazecminer.js", OUT, preffix)
 
             # Reset server
-            if p1 != None:
+            if p1 is not None:
                 p1.communicate(timeout=0)
 
             print("Opening server...")
             p1 = Popen(["perl", "server.pl"], cwd="yazec")
-            # Collect traces
+            # Just to be sure
+            time.sleep(1)
 
+            # Collect traces
             lines = exec_selenium.main(False, 10)
-            
-            # Save collect 
-            f = open(f"out/data.py", 'a')
+
+            # Save collect
+            f = open("out/data.py", "a")
             sanitizedName = w.replace(".wasm", "").replace("-", "_")
             f.write(f"d_{sanitizedName} = {lines}\n")
             f.close()
@@ -47,22 +48,20 @@ def processPool(poolFolder):
             if try_to_break.tryToBreak(lines):
                 print(f"\n\n--------------{w} breaks the classifier !!!\n\n")
 
-                f = open(f"out/class.txt", 'a')
+                f = open("out/class.txt", "a")
                 f.write(f"{w} breaks the classifier\n")
                 f.close()
 
             print("Killing server...")
-            os.kill(p1.pid, signal.SIGTERM)
-
+            p1.terminate()
 
             os.remove(w1)
             os.remove(wt1)
 
     except KeyboardInterrupt:
         if p1 is not None:
-            os.kill(p1.pid, signal=signal.SIGTERM)
-        
-        
+            p1.terminate()
+
 
 if __name__ == "__main__":
     processPool("pool")
