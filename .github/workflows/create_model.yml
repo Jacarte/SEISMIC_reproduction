@@ -2,13 +2,7 @@ name: Create and save SVM model
 # This workflow is triggered on pushes to the repository.
 on:
   push:
-    paths:
-    - 'data/*/**'
-    - 'train.py'
-    - 'automation/collect.py'
-    - 'automation/pool/*/**'
-    - 'automation/*/**'
-    - '.github/workflows/create_model.yml'
+    branches: [master]
 
 jobs:
   train:
@@ -72,17 +66,27 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: '3.8'
-      
+
       - run: pip3 install -r requirements.txt
       - name: Install cmake
         run: |
-          sudo apt-get update && sudo apt-get install -y cmake
+          sudo apt-get update -qq && sudo apt-get install -y build-essential cmake
 
       - name: Install wabt
         run: |
-          git clone https://github.com/WebAssembly/wabt && cd wabt && git submodule update --init && mkdir build && cd build && cmake .. && cmake --build .
+          git clone --depth=1 https://github.com/WebAssembly/wabt
+          cd wabt
+          git submodule update --init
+          mkdir build
+          cd build
+          cmake ..
+          cmake --build .
       - run: python3 train.py
-      - run: export PATH=$(pwd)/wabt/build:$PATH && cd automation && mkdir out && python3 collect.py 
+      - run: |
+          export PATH=$(pwd)/wabt/build:$PATH
+          cd automation
+          mkdir out
+          python3 collect.py
       - name: Upload artifacts
         uses: actions/upload-artifact@v2
         with:
