@@ -8,3 +8,4 @@ from .bullets import data as bullets
 from .basic4gl import data as basic4gl
 from .tanks import data as tanks
 from .cryptonight import data as cryptonight
+from .nfminer import data as nfminer

@@ -15,9 +15,10 @@ from data import cryptonight as cryptonight
 from data import funkykarts as funky
 from data import tanks as tanks
 from data import yazec_original as yazec
+from data import nfminer as nfminer
 
 noMiners = astar + asteroids + funky + cpack + bullets + tanks + basic4gl
-miners = yazec + coinhive + cryptonight.tolist()
+miners = yazec + coinhive + cryptonight.tolist() + nfminer
 
 X = np.array(noMiners + miners)
 y = np.array([0] * len(noMiners) + [1] * len(miners))
