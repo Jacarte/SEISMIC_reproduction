@@ -1,12 +1,10 @@
 #!/usr/bin/env python3
-import atexit
 import os
 import time
 
 from selenium import webdriver
 from selenium.webdriver import FirefoxProfile
 from selenium.webdriver.firefox.options import Options
-import sys
 
 LOG_PATH = "geckodriver.log"
 
@@ -29,14 +27,18 @@ def main(cli=True, observations=2):
     options = Options()
     options.headless = True
     driver = webdriver.Firefox(firefox_profile=profile, options=options)
-    atexit.register(driver.close)
 
-    lines = collect(driver, observations)
-    if not cli:
-        return lines
+    try:
+        lines = collect(driver, observations)
+        if not cli:
+            return lines
 
-    for line in lines:
-        print(line)
+        for line in lines:
+            print(line)
+
+        return None
+    finally:
+        driver.close()
 
 
 def collect(driver, observations):
@@ -51,7 +53,7 @@ def collect(driver, observations):
             time.sleep(1)
             continue
 
-        return lines[2:] #discarding first measurements
+        return lines[2:]  # discarding first measurements
 
 
 def read_log(fname=LOG_PATH, prefix='console.log: "('):
