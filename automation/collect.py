@@ -37,7 +37,7 @@ def processPool(poolFolder):
             time.sleep(1)
 
             # Collect traces
-            lines = exec_selenium.main(False, 10)
+            lines = exec_selenium.main(False, 7)
 
             # Save collect
             f = open("out/data.py", "a")
@@ -45,8 +45,9 @@ def processPool(poolFolder):
             f.write(f"d_{sanitizedName} = {lines}\n")
             f.close()
 
-            if try_to_break.tryToBreak(lines):
-                print(f"\n\n--------------{w} breaks the classifier !!!\n\n")
+            broken, labels = try_to_break.tryToBreak(lines) 
+            if broken:
+                print(f"\n\n--------------\n{w} breaks the classifier !!!\n\n {labels}")
 
                 f = open("out/class.txt", "a")
                 f.write(f"{w} breaks the classifier\n")

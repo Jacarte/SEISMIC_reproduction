@@ -1635,7 +1635,7 @@ function isFileURI(filename) {
 
 
 
-var wasmBinaryFile = '128.1.jazecminer.profiled.wasm';
+var wasmBinaryFile = 't.wasmjazecminer.profiled.wasm';
 if (!isDataURI(wasmBinaryFile)) {
   wasmBinaryFile = locateFile(wasmBinaryFile);
 }
