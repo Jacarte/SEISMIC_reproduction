@@ -20,8 +20,8 @@ def process(root, file, out):
 	global_ = re.compile("\s*\(global\s*\(;(\d+);\).*$")
 	type0 = re.compile("\s*\(type\s*\(;(\d+);\)\s*\(func\s*\(result\s*i32\)\)\).*$")
 
-	wat2wasm = "wat2wasm"
-	wasm2wat = "wasm2wat"
+	wat2wasm = "/wabt/build/wat2wasm"
+	wasm2wat = "/wabt/build/wasm2wat"
 
 	fullPath = f"{root}/{file}"
 	watFileName =  "%s.wat"%file.replace(".wasm", "").replace("-", '.')
