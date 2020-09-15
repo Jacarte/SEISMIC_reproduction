@@ -37,7 +37,7 @@ def processPool(poolFolder):
             time.sleep(1)
 
             # Collect traces
-            lines = exec_selenium.main(False, 10)
+            lines = exec_selenium.main(False, 7)
 
             # Save collect
             f = open("out/data.py", "a")
